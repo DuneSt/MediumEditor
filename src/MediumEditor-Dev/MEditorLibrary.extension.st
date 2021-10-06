@@ -7,6 +7,11 @@ MEditorLibrary class >> deployFiles [
 ]
 
 { #category : #'*MediumEditor-Dev' }
+MEditorLibrary class >> filesDirectory [
+	^ GitMediumEditor resources
+]
+
+{ #category : #'*MediumEditor-Dev' }
 MEditorLibrary class >> importFiles [
 	<script>
 	super importFiles
