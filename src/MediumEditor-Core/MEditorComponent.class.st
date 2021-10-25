@@ -89,11 +89,10 @@ MEditorComponent >> renderContentOn: html [
 			put:
 			(html jQuery ajax
 				type: 'POST';
-				callback: [ :aString | self text: aString ]
+				callback: [ :aString | self saveCallback cull: aString ]
 					value: (JSStream on: 'MediumEditorSt.save("#' , id , '.meditor-editable")');
 				onComplete: 'MediumEditorSt.saveCompleted()';
 				onError: 'MediumEditorSt.saveFailed()');
-		style: 'box-shadow: 2px 2px 5px #8c8c8c;margin: 5px 10px;padding: 15px;';
 		with: self text
 ]
 

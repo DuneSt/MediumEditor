@@ -30,7 +30,7 @@ MEditorLibrary >> bindingJs [
 
   static save(selector) {
     document.body.style.cursor = "progress"
-    return MediumEditorSt.getInstance(selector ).getValue()
+    return MediumEditorSt.getInstance(selector).getValue()
   }
 
   static saveCompleted() {
@@ -51,7 +51,7 @@ MEditorLibrary >> bindingJs [
     let extensions = JSON.parse(this.editor.dataset["extensions"])
     if (extensions && extensions.length) {
       extensions.forEach(extName => {
-        options.extensions[extName.toLowerCase()] = eval(`new ${extName}()`)
+        options.extensions[extName.toLowerCase()] = Function(`return new ${extName}()`)()
       })
     }
     let buttons = JSON.parse(this.editor.dataset["buttons"])
@@ -81,7 +81,9 @@ MEditorLibrary >> bindingJs [
   }
 
   getValue() {
-    return this.constructor.convertor().makeMarkdown(this.editor.innerHTML).replace(/<(\/)?br>/g, "")
+    return this.constructor.convertor().makeMarkdown(this.editor.innerHTML)
+      .replace(/<(\/)?br>/g, "")
+      .replace(/\(<([.\w\/]*)>\)/g, "($1)")
   }
 
   delay(key, duration, fct) {
@@ -110,7 +112,7 @@ let SaveButton = MediumEditor.extensions.button.extend({
   }
 })
 
-MediumEditorSt.extensions.SwitchButton = SwitchButton'
+window.addEventListener("load", MediumEditorSt.init)'
 ]
 
 { #category : #loading }
