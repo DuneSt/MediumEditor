@@ -19,7 +19,7 @@ BaselineOfMediumEditor >> baseline: spec [
 			spec
 				package: 'MediumEditor-Core' with: [ spec requires: #('Seaside3') ];
 				package: 'MediumEditor-Dev'
-					with: [ spec requires: #('MediumEditor-Core' 'GitBrigde' 'FileLibraryHelper') ];
+					with: [ spec requires: #('MediumEditor-Core' 'GitBridge' 'FileLibraryHelper') ];
 				package: 'MediumEditor-Demo'
 					with: [ spec requires: #('MediumEditor-Core') ].
 					
