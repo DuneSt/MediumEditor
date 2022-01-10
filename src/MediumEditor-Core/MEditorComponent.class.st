@@ -8,7 +8,7 @@ Class {
 		'extensions',
 		'buttons'
 	],
-	#category : #'MediumEditor-Core-MediumEditor-Core'
+	#category : #'MediumEditor-Core'
 }
 
 { #category : #js }
