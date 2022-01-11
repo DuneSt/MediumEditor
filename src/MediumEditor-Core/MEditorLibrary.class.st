@@ -30,7 +30,9 @@ MEditorLibrary >> bindingJs [
 
   static save(selector) {
     document.body.style.cursor = "progress"
-    return MediumEditorSt.getInstance(selector).getValue()
+    let value = MediumEditorSt.getInstance(selector).getValue();
+    //remove last \n\n create by the conversion of <p> in string
+    return value.substring(0, value.length - 2)
   }
 
   static saveCompleted() {
